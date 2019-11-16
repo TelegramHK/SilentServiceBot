@@ -1,7 +1,8 @@
 // Summon env variables
 require('dotenv').config()
 
-const restify  = require("restify");
+const restify = require("restify")
+const fs      = require("fs")
 
 // Import Route Handler
 const catchAllHandler = require("./handlers/endpointModules/catchall").default,
