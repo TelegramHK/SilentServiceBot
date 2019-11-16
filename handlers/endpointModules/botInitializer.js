@@ -43,7 +43,7 @@ instance.catch((err) => {
 if (process.env.NODE_ENV != "production")
   instance.telegram.setWebhook(`https://${process.env.localtunnel_name}.localtunnel.me/botService`)
 else if(process.env.NODE_ENV == "production")
-  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, false, 100, serviceMessageFilter)
+  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, false, 100, ["message"])
 
 // restify handler for bot functionality
 const botInstance = (req, res, next)=>{
