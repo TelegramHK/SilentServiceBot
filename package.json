@@ -1,21 +1,21 @@
 {
-  "name": "takeshobot",
+  "name": "SilentServiceBot",
   "version": "0.1.0",
-  "description": "A telegram bot to keep track venue keyholders' presences.",
+  "description": "A telegram bot to delete service messages.",
   "main": "server.js",
   "scripts": {
     "test": "npx babel-node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lifehome/takeshobot.git"
+    "url": "git+https://github.com/lifehome/SilentServiceBot.git"
   },
   "author": "",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/lifehome/takeshobot/issues"
+    "url": "https://github.com/lifehome/SilentServiceBot/issues"
   },
-  "homepage": "https://github.com/lifehome/takeshobot#readme",
+  "homepage": "https://github.com/lifehome/SilentServiceBot#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "restify": "^8.4.0",

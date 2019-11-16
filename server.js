@@ -1,3 +1,6 @@
+// Summon env variables
+require('dotenv').config()
+
 const restify  = require("restify");
 
 // Import Route Handler

@@ -1,5 +1,5 @@
 const commandHelp = (ctx)=>{
-  // Do something here.
+  ctx.reply("Sorry this bot does not provide help at the moment.")
 }
 
 export default commandHelp

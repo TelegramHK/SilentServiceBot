@@ -1,6 +1,3 @@
-// Let's summon the environment variables
-require('dotenv').config({ path: '..' })
-
 import { resolve } from "path"
 import Telegraf from "telegraf"
 import TelegrafI18n from 'telegraf-i18n'
@@ -11,6 +8,7 @@ const instance = new Telegraf(process.env.BOT_TOKEN)
 import cmdHandler_start from "../botModules/commands/start"
 import cmdHandler_help from "../botModules/commands/help"
 import cmdHandler_stop from "../botModules/commands/stop"
+import serviceMessageHandler from "../botModules/serviceMessageHandler"
 
 // Initialize i18n module
 const i18n = new TelegrafI18n({
@@ -33,6 +31,14 @@ instance.catch((err) => {
   instance.command('start', cmdHandler_start)
   instance.command('help', cmdHandler_help)
   instance.command('stop', cmdHandler_stop)
+
+  // Service Message Handler
+  instance.on(["new_chat_members", "left_chat_member",
+               "new_chat_title", "new_chat_photo",
+               "delete_chat_photo", "group_chat_created",
+               "migrate_to_chat_id", "supergroup_chat_created",
+               "channel_chat_created", "migrate_from_chat_id",
+               "pinned_message"], serviceMessageHandler)
 
 // Register module with corresponding event -- END
 
