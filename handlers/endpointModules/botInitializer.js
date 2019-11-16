@@ -10,6 +10,8 @@ import cmdHandler_help from "../botModules/commands/help"
 import cmdHandler_stop from "../botModules/commands/stop"
 import serviceMessageHandler from "../botModules/serviceMessageHandler"
 
+const serviceMessageFilter = ["new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo", "group_chat_created", "migrate_to_chat_id", "supergroup_chat_created", "channel_chat_created", "migrate_from_chat_id", "pinned_message"]
+
 // Initialize i18n module
 const i18n = new TelegrafI18n({
   defaultLanguage: 'en',
@@ -33,12 +35,7 @@ instance.catch((err) => {
   instance.command('stop', cmdHandler_stop)
 
   // Service Message Handler
-  instance.on(["new_chat_members", "left_chat_member",
-               "new_chat_title", "new_chat_photo",
-               "delete_chat_photo", "group_chat_created",
-               "migrate_to_chat_id", "supergroup_chat_created",
-               "channel_chat_created", "migrate_from_chat_id",
-               "pinned_message"], serviceMessageHandler)
+  instance.on(serviceMessageFilter, serviceMessageHandler)
 
 // Register module with corresponding event -- END
 
@@ -46,7 +43,7 @@ instance.catch((err) => {
 if (process.env.NODE_ENV != "production")
   instance.telegram.setWebhook(`https://${process.env.localtunnel_name}.localtunnel.me/botService`)
 else if(process.env.NODE_ENV == "production")
-  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`)
+  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, false, 100, serviceMessageFilter)
 
 // restify handler for bot functionality
 const botInstance = (req, res, next)=>{
