@@ -1,4 +1,6 @@
 import { resolve } from "path"
+import fs from "fs"
+
 import Telegraf from "telegraf"
 import TelegrafI18n from 'telegraf-i18n'
 const instance = new Telegraf(process.env.BOT_TOKEN)
@@ -43,7 +45,7 @@ instance.catch((err) => {
 if (process.env.NODE_ENV != "production")
   instance.telegram.setWebhook(`https://${process.env.localtunnel_name}.localtunnel.me/botService`)
 else if(process.env.NODE_ENV == "production")
-  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, process.env.prod_certpath, 100, ["message"])
+  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, fs.readFileSync(process.env.prod_certpath), 100, ["message"])
 
 // restify handler for bot functionality
 const botInstance = (req, res, next)=>{
