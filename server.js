@@ -6,7 +6,7 @@ const fs      = require("fs")
 
 // Import Route Handler
 const catchAllHandler = require("./handlers/endpointModules/catchall").default,
-      botHandler      = require("./handlers/endpointModules/botInitializer").default;
+      botInstance     = require("./handlers/endpointModules/botInitializer").default;
 
 // Initialize restify
 const server = new restify.createServer({
@@ -23,7 +23,10 @@ server.use(restify.plugins.bodyParser({
 }));
 
 // Bot handler
-server.post('/botService', botHandler);
+server.use((req, res, next) => req.method === 'POST' && req.url === '/botService'
+  ? botInstance.handleUpdate(req.body, res)
+  : next()
+)
 
 // Final catch-all handler
 server.get('*', catchAllHandler);

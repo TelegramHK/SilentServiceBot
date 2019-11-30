@@ -47,15 +47,4 @@ if (process.env.NODE_ENV != "production")
 else if(process.env.NODE_ENV == "production")
   instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, {source: process.env.prod_certpath}, 100, ["message"])
 
-// restify handler for bot functionality
-const botInstance = (req, res, next)=>{
-  // Handover restify request body to Telegraf
-  instance.handleUpdate(req.body)
-
-  // Configure response context
-  res.status(200)
-  res.json({"result": "OK"})
-  next()
-}
-
-export default botInstance
+export default instance
