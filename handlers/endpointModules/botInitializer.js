@@ -45,6 +45,6 @@ instance.catch((err) => {
 if (process.env.NODE_ENV != "production")
   instance.telegram.setWebhook(`https://${process.env.localtunnel_name}.localtunnel.me/botService`)
 else if(process.env.NODE_ENV == "production")
-  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, {source: process.env.prod_certpath}, 100, ["message"])
+  instance.telegram.setWebhook(`https://bot-${process.env.prod_subdomain}.telegram.hk/botService`, {source: process.env.prod_certpath ? process.env.prod_certpath : ""}, 100, ["message"])
 
 export default instance
