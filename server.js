@@ -30,10 +30,12 @@ if(process.env.NODE_DEBUG == "true")
   })
 
 // Bot handler
-server.use((req, res) => {
+server.use((req, res, next) => {
   if(req.method === 'POST' && req.url === '/botService'){
     res.status(200)
     botInstance.handleUpdate(req.body, res)
+  } else {
+    next()
   }
 
   if(process.env.NODE_DEBUG == "true")
