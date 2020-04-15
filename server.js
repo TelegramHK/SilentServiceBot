@@ -25,7 +25,7 @@ server.use(restify.plugins.bodyParser({
 // Dump that motherfucker in debug mode
 if(process.env.NODE_DEBUG == "true")
   server.use((req, res, next) => {
-    console.log(`[*] BODY: ${req.body}`)
+    console.log(`[*] BODY: ${JSON.stringify(req.body)}`)
     next()
   })
 
@@ -37,7 +37,7 @@ server.use((req, res, next) => {
   }
 
   if(process.env.NODE_DEBUG == "true")
-    console.log(`[*] RESP: ${res}`)
+    console.log(`[*] RESP: ${JSON.stringify(res)}`)
 
   next()
 })
