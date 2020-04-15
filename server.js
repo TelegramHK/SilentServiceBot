@@ -30,7 +30,7 @@ if(process.env.NODE_DEBUG == "true")
   })
 
 // Bot handler
-server.use((req, res, next) => {
+server.use((req, res) => {
   if(req.method === 'POST' && req.url === '/botService'){
     res.status(200)
     botInstance.handleUpdate(req.body, res)
@@ -38,8 +38,6 @@ server.use((req, res, next) => {
 
   if(process.env.NODE_DEBUG == "true")
     console.log(`[*] RESP: ${JSON.stringify(res.body)}`)
-
-  next()
 })
 
 // Final catch-all handler
