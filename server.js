@@ -37,7 +37,7 @@ server.use((req, res, next) => {
   }
 
   if(process.env.NODE_DEBUG == "true")
-    console.log(`[*] RESP: ${JSON.stringify(res)}`)
+    console.log(`[*] RESP: ${JSON.stringify(res.body)}`)
 
   next()
 })
