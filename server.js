@@ -33,7 +33,7 @@ if(process.env.NODE_DEBUG == "true")
 server.use((req, res, next) => {
   if(req.method === 'POST' && req.url === '/botService'){
     res.status(200)
-    botInstance.handleUpdate(req.body, res)
+    botInstance.handleUpdate(req.body, res.body)
   }
 
   if(process.env.NODE_DEBUG == "true")
