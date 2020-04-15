@@ -14,4 +14,8 @@ instance.catch((err) => {
   console.log(err) // TODO: Refactor and produce a better error catcher module
 })
 
-instance.launch()
+instance.launch({
+  polling:{
+    allowedUpdates: ["message"]
+  }
+})
