@@ -25,15 +25,20 @@ server.use(restify.plugins.bodyParser({
 // Dump that motherfucker in debug mode
 if(process.env.NODE_DEBUG == "true")
   server.use((req, res, next) => {
-    console.log(req)
+    console.log(`[*] BODY: ${req.body}`)
     next()
   })
 
 // Bot handler
-server.use((req, res, next) => req.method === 'POST' && req.url === '/botService'
-  ? botInstance.handleUpdate(req.body, res)
-  : next()
-)
+server.use((req, res, next) => {
+  if(req.method === 'POST' && req.url === '/botService')
+    botInstance.handleUpdate(req.body, res)
+
+  if(process.env.NODE_DEBUG == "true")
+    console.log(`[*] RESP: ${res}`)
+
+  next()
+})
 
 // Final catch-all handler
 server.get('*', catchAllHandler);
