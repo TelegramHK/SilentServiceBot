@@ -39,7 +39,7 @@ server.use(async (req, res, next) => {
   }
 
   if(process.env.NODE_DEBUG == "true")
-    console.log(`[*] RESP: ${JSON.stringify(res.body)}`)
+    console.log(`[*] RESP: ${JSON.stringify(res.status)}`)
 })
 
 // Final catch-all handler
