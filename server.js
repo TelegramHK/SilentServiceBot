@@ -22,6 +22,13 @@ server.use(restify.plugins.bodyParser({
     mapParams: true
 }));
 
+// Dump that motherfucker in debug mode
+if(process.env.NODE_DEBUG == "true")
+  server.use((req, res, next) => {
+    console.log(req)
+    next()
+  })
+
 // Bot handler
 server.use((req, res, next) => req.method === 'POST' && req.url === '/botService'
   ? botInstance.handleUpdate(req.body, res)
