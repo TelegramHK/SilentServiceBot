@@ -43,24 +43,16 @@ server.use(restify.plugins.bodyParser({
     mapParams: true
 }));
 
-// Dump that motherfucker in debug mode
-if(process.env.NODE_DEBUG == "true")
-  server.use((req, res, next) => {
-    console.log(`[*] BODY: ${JSON.stringify(req.body)}`)
-    next()
-  })
-
 // Bot handler
 server.use(async (req, res, next) => {
   if(req.method === 'POST' && req.url === '/botService'){
     await instance.handleUpdate(req.body, res)
-    res.status(200)
   } else {
     next()
   }
 
   if(process.env.NODE_DEBUG == "true")
-    console.log(`[*] RESP: ${JSON.stringify(res.status)}`)
+    console.log(`[*] RESP: ${res.status}`)
 })
 
 // Final catch-all handler
