@@ -4,7 +4,7 @@
   "description": "A telegram bot to delete service messages.",
   "main": "server.js",
   "scripts": {
-    "test": "npx babel-node server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,14 +17,7 @@
   },
   "homepage": "https://github.com/lifehome/SilentServiceBot#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "restify": "^8.4.0",
-    "telegraf": "^3.33.0",
-    "telegraf-i18n": "^6.6.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/preset-env": "^7.6.3"
+    "telegraf": "^3.33.0"
   }
 }
