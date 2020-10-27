@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lifehome/SilentServiceBot.git"
+    "url": "git+https://github.com/TelegramHK/SilentServiceBot.git"
   },
   "author": "",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/lifehome/SilentServiceBot/issues"
+    "url": "https://github.com/TelegramHK/SilentServiceBot/issues"
   },
-  "homepage": "https://github.com/lifehome/SilentServiceBot#readme",
+  "homepage": "https://github.com/TelegramHK/SilentServiceBot#readme",
   "dependencies": {
     "restify": "^8.4.0",
     "telegraf": "^3.33.0"
