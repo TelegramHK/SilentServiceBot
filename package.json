@@ -1,5 +1,5 @@
 {
-  "name": "SilentServiceBot",
+  "name": "silentservicebot",
   "version": "0.1.0",
   "description": "A telegram bot to delete service messages.",
   "main": "server.js",
