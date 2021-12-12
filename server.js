@@ -15,7 +15,17 @@ const serviceMessageFilter = [
 ]
 
 instance.on(serviceMessageFilter, ctx => {
-  ctx.deleteMessage().catch(err => console.log(err))
+  ctx.deleteMessage()
+    .catch(e => {
+      if (
+        e.response.error_code === 400
+          && e.response.description === 'Bad Request: message to delete not found'
+      ) {
+        console.error(`[ERROR] Message not found. (msgid ${e.on.payload.message_id} at chat ${e.on.payload.chat_id})`)
+      } else {
+        console.error(`[ERROR] Unhandled error occured: `, e)
+      }
+    })
 })
 
 instance.launch({
